@@ -69,7 +69,6 @@ class AddImagesView @JvmOverloads constructor(
         mAdapter = AddImagesAdapter(mContext, add_limit_nums,addImgs,addCloseImgs,addErrImgs)
         binding.rvContent.adapter = mAdapter
         mAdapter!!.addItem(AddImagesInfo("", "1"))
-
         mAdapter!!.setOnAddListener(object : AddImagesAdapter.OnAddClickListener {
             override fun onAddClick(view: View?, item: AddImagesInfo?) {
                 when (view!!.id) {

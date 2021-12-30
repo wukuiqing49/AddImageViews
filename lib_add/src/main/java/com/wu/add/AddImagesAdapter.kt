@@ -123,10 +123,10 @@ class AddImagesAdapter(
             binding.rlClose.visibility = View.VISIBLE
             binding.rlAdd.visibility = View.GONE
             if (addErrImgs!=-1){
-             var requestOptions=   RequestOptions.centerCropTransform().error(addErrImgs)
+             var requestOptions=   RequestOptions().error(addErrImgs)
                 Glide.with(mContext).load(getItem(position)!!.imgUrl).apply(requestOptions).into(binding.ivContent)
             }else{
-                var requestOptions=   RequestOptions.centerCropTransform().error(R.drawable.iv_add_err)
+                var requestOptions=   RequestOptions().error(R.drawable.iv_add_err)
                 Glide.with(mContext).load(getItem(position)!!.imgUrl).apply(requestOptions).into(binding.ivContent)
             }
 

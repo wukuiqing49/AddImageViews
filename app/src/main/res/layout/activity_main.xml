@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             app:add_limit_nums="9"
             app:add_imgs="@mipmap/add"
+            app:add_err_imgs="@mipmap/err"
             app:add_close_imgs="@mipmap/close"
             app:column_nums="5"
             />
