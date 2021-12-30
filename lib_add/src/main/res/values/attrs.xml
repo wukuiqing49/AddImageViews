@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AddImagesStyle">
+
+        <attr name="add_imgs" format="reference"/>
+        <attr name="add_close_imgs" format="reference"/>
+        <attr name="add_err_imgs" format="reference"/>
+        <attr name="column_nums" format="integer"/>
+        <attr name="add_limit_nums" format="integer"/>
+
+
+    </declare-styleable>
+</resources>
