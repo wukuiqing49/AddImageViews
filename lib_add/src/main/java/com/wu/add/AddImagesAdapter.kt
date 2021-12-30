@@ -10,6 +10,7 @@ import android.widget.RelativeLayout
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.wkq.lib_base.adapter.AddImagesViewHolder
 import com.wu.add.databinding.ItemAddImagesBinding
 
@@ -27,13 +28,15 @@ class AddImagesAdapter(
     mContext: Context,
     limtNum: Int,
     addImgs: Int,
-    addCloseImgs: Int
+    addCloseImgs: Int,
+    addErrImgs: Int
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mContext: Context
     var limtNum = 9
     var addImgs = -1
     var addCloseImgs = -1
+    var addErrImgs = -1
     var addImages = ArrayList<AddImagesInfo>()
 
     init {
@@ -41,6 +44,7 @@ class AddImagesAdapter(
         this.limtNum = limtNum
         this.addCloseImgs = addCloseImgs
         this.addImgs = addImgs
+        this.addErrImgs = addErrImgs
     }
 
     var listener: OnAddClickListener? = null
@@ -115,11 +119,17 @@ class AddImagesAdapter(
         }
 
         if (getItem(position)!!.type.equals("2")) {
-            Glide.with(mContext).load(getItem(position)!!.imgUrl).into(binding.ivContent)
             binding.ivContent.visibility = View.VISIBLE
             binding.rlClose.visibility = View.VISIBLE
             binding.rlAdd.visibility = View.GONE
-            Glide.with(mContext).load(getItem(position)!!.imgUrl).into(binding.ivContent)
+            if (addErrImgs!=-1){
+             var requestOptions=   RequestOptions.centerCropTransform().error(addErrImgs)
+                Glide.with(mContext).load(getItem(position)!!.imgUrl).apply(requestOptions).into(binding.ivContent)
+            }else{
+                var requestOptions=   RequestOptions.centerCropTransform().error(R.drawable.iv_add_err)
+                Glide.with(mContext).load(getItem(position)!!.imgUrl).apply(requestOptions).into(binding.ivContent)
+            }
+
         } else {
             binding.ivContent.visibility = View.GONE
             binding.rlAdd.visibility = View.VISIBLE

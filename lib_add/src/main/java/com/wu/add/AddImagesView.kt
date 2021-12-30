@@ -15,7 +15,7 @@ import com.wu.add.databinding.LayoutAddImagesBinding
  *
  * 时间:2021/12/30
  *
- * 用途:
+ * 用途: 九宫格动态添加图片
  */
 
 
@@ -31,9 +31,11 @@ class AddImagesView @JvmOverloads constructor(
     private var addCloseImgs = -1
     //错误页的图片资源
     private var addErrImgs = -1
-    //
+    //列数
     private var columnNums = 5
+    //最大图片数
     private var add_limit_nums = 9
+
     private var mAdapter: AddImagesAdapter? = null
 
 
@@ -64,7 +66,7 @@ class AddImagesView @JvmOverloads constructor(
         )
         addView(binding.root)
         binding.rvContent.layoutManager = GridLayoutManager(mContext, columnNums)
-        mAdapter = AddImagesAdapter(mContext, add_limit_nums,addImgs,addCloseImgs)
+        mAdapter = AddImagesAdapter(mContext, add_limit_nums,addImgs,addCloseImgs,addErrImgs)
         binding.rvContent.adapter = mAdapter
         mAdapter!!.addItem(AddImagesInfo("", "1"))
 
