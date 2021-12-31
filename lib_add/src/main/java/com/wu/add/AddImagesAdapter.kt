@@ -29,14 +29,16 @@ class AddImagesAdapter(
     limtNum: Int,
     addImgs: Int,
     addCloseImgs: Int,
-    addErrImgs: Int
+    addErrImgs: Int,
+    addLimitNums: Int
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var mContext: Context
-    var limtNum = 9
+    var limtNum = 5
     var addImgs = -1
     var addCloseImgs = -1
     var addErrImgs = -1
+    var addLimitNums = 9
     var addImages = ArrayList<AddImagesInfo>()
 
     init {
@@ -45,6 +47,7 @@ class AddImagesAdapter(
         this.addCloseImgs = addCloseImgs
         this.addImgs = addImgs
         this.addErrImgs = addErrImgs
+        this.addLimitNums = addLimitNums
     }
 
     var listener: OnAddClickListener? = null
@@ -54,7 +57,7 @@ class AddImagesAdapter(
     }
 
     fun getHeight(): Int {
-        return (getScreenWidth(mContext) - dip2px(mContext, 80)) / 4
+        return (getScreenWidth(mContext)) / 5
     }
 
     private fun dip2px(context: Context, dp: Int): Int {
@@ -81,7 +84,7 @@ class AddImagesAdapter(
             )
 
         var layout = RelativeLayout.LayoutParams(getHeight(), getHeight())
-        layout.setMargins(10, 10, 10, 10)
+        layout.setMargins(dip2px(mContext,1), dip2px(mContext,1), dip2px(mContext,1), dip2px(mContext,1))
         viedataBinding.root.layoutParams = layout
 
         var dataBindingViewHolder: AddImagesViewHolder = AddImagesViewHolder(viedataBinding.root)
@@ -167,11 +170,11 @@ class AddImagesAdapter(
 
         var newList = processEnd(getItems()!!)
         if (newList.size >= limtNum) return
-        if (newList!!.size + addDatas.size < limtNum) {
+        if (newList!!.size + addDatas.size < addLimitNums) {
             newList!!.addAll(addDatas)
             newList!!.add(AddImagesInfo("", "1"))
         } else {
-            newList!!.addAll(addDatas.subList(0, limtNum - newList.size))
+            newList!!.addAll(addDatas.subList(0, addLimitNums - newList.size))
         }
         notifyDataSetChanged()
 

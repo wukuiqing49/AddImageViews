@@ -18,15 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         binding= DataBindingUtil.setContentView<ActivityMainBinding>(this,R.layout.activity_main)
-        binding!!.btAdd.setOnClickListener {
-            ImagePicker.Builder()
-                .setSelectGif(true)
-                .maxNum(9)
-                .needCamera(true)
-                .selectMode(PickerConfig.PICKER_IMAGE)
-                .builder() //跳转到图片选择页面 activity    请求码            结果码
-                .start(this, 200, PickerConfig.DEFAULT_RESULT_CODE)
-        }
+
 
         binding!!.addImages.setAddImagesViewListener(object : AddImagesView.AddImagesViewListener{
             override fun onAdd() {

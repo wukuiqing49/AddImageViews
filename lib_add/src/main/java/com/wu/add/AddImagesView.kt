@@ -65,8 +65,9 @@ class AddImagesView @JvmOverloads constructor(
             false
         )
         addView(binding.root)
+        if (columnNums>5)columnNums=5
         binding.rvContent.layoutManager = GridLayoutManager(mContext, columnNums)
-        mAdapter = AddImagesAdapter(mContext, add_limit_nums,addImgs,addCloseImgs,addErrImgs)
+        mAdapter = AddImagesAdapter(mContext, columnNums,addImgs,addCloseImgs,addErrImgs,add_limit_nums)
         binding.rvContent.adapter = mAdapter
         mAdapter!!.addItem(AddImagesInfo("", "1"))
         mAdapter!!.setOnAddListener(object : AddImagesAdapter.OnAddClickListener {
