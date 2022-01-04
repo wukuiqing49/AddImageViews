@@ -2,12 +2,17 @@
 <resources>
     <declare-styleable name="AddImagesStyle">
 
-        <attr name="add_imgs" format="reference"/>
-        <attr name="add_close_imgs" format="reference"/>
-        <attr name="add_err_imgs" format="reference"/>
+        <!--限制每行展示的个数-->
         <attr name="column_nums" format="integer"/>
+        <!--限制添加的个数-->
         <attr name="add_limit_nums" format="integer"/>
 
+        <!--添加Item图片资源-->
+        <attr name="add_imgs" format="reference"/>
+        <!--删除按钮的图片资源-->
+        <attr name="add_close_imgs" format="reference"/>
+        <!--错误展示的图片资源-->
+        <attr name="add_err_imgs" format="reference"/>
 
     </declare-styleable>
 </resources>

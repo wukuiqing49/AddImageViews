@@ -56,7 +56,7 @@ class AddImagesView @JvmOverloads constructor(
         this.listener = listener
     }
 
-
+    //初始换数据
     private fun initView() {
         var binding = DataBindingUtil.inflate<LayoutAddImagesBinding>(
             LayoutInflater.from(mContext),
@@ -86,7 +86,7 @@ class AddImagesView @JvmOverloads constructor(
 
         })
     }
-
+    //添加数据
     fun addAddImages(lists: List<AddImagesInfo>) {
         mAdapter!!.addItems(lists)
     }
